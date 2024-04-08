@@ -1,0 +1,8 @@
+package garvit;
+
+import jakarta.servlet.annotation.WebServlet;
+
+
+	@WebServlet("/user")
+public class User {	
+}

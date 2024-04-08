@@ -1,0 +1,52 @@
+package garvit;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/user")
+public class User extends HttpServlet {
+	private static final String query = "Select * from register where id_user = ?";
+	@Override
+	 protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+     response.setContentType("text/html");
+     PrintWriter out = response.getWriter();
+     String url = "jdbc:sqlserver://MAX;databaseName=Library;encrypt=true;trustServerCertificate=true";
+     String user = "newlogin";
+     String password = "Maks2005";
+     String idParam = req.getParameter("id");
+     try {
+         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+         try (Connection con = DriverManager.getConnection(url, user, password);
+              PreparedStatement ps = con.prepareStatement(query)) {
+        	 
+//          Получение айди и всех данных юзера    
+//        	 
+//        	 Присвоение их значений в строки и выведение на сайте всех значений
+//        	 
+
+             int count = ps.executeUpdate();
+             if (count == 1) {
+                 out.println("<h3>Record is inserted successfully!!</h3>");
+             } else {
+                 out.println("<h1>Error: Record insertion failed</h1>");
+             }
+         }
+     } catch (NumberFormatException e) {
+         out.println("<h1>Error: Invalid input format</h1>");
+     } catch (ClassNotFoundException | SQLException e) {
+         e.printStackTrace();
+         out.println("<h1>" + e.getMessage() + "</h1>");
+     }
+     out.println("<a href ='Account.html'>Home</a>");
+ }
+}

@@ -1,0 +1,47 @@
+package garvit;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/login")
+public class Llogin extends HttpServlet {
+private static final String query = "Insert into register(login_user, password_user, is_admin, phone_number, email) values(?,?,0,?,?)";
+@Override
+protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+response.setContentType("text/html");
+PrintWriter out = response.getWriter();
+String url = "jdbc:sqlserver://MAX;databaseName=Library;encrypt=true;trustServerCertificate=true";
+String user = "newlogin";
+String password = "Maks2005";
+try {
+    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+    try (Connection con = DriverManager.getConnection(url, user, password);
+         PreparedStatement ps = con.prepareStatement(query)) {
+String name = req.getParameter(name);
+
+
+        int count = ps.executeUpdate();
+        if (count == 1) {
+            out.println("<h3>Record is inserted successfully!!</h3>");
+        } else {
+            out.println("<h1>Error: Record insertion failed</h1>");
+        }
+    }
+} catch (NumberFormatException e) {
+    out.println("<h1>Error: Invalid input format</h1>");
+} catch (ClassNotFoundException | SQLException e) {
+    e.printStackTrace();
+    out.println("<h1>" + e.getMessage() + "</h1>");
+}
+out.println("<a href ='Account.html'>Home</a>");
+}
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Max-Library</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<style>
+	/*
+	html, body {
+		       background: #1f1d21;
+		   }
+*/		   
+  .wrapper {
+	padding-bottom: 10px;
+    position: left;
+    top: 50%;
+    left: 50%;
+  }
+  .wrapper1 {
+	padding-bottom: 10px;
+      position: left;
+      top: 50%;
+      left: 50%;
+    }
+
+  a {
+    display: block;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #333;
+    border: 2px solid #333;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    transition: all .35s;
+  }
+
+  a span {
+    position: relative;
+    z-index: 2;
+  }
+
+  a:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #ff003b;
+    transition: all .35s;
+  }
+
+  a:hover {
+    color: #fff;
+  }
+
+  a:hover:after {
+    width: 100%;
+  }
+</style>
+</head>
+<body class="container-fluid card" style="width: 50rem;">
+  <h2 class="bg-danger text-white text-center">Book Adding</h2>
+  <form action="register" method="post">
+    <table class="table" table-hover>
+      <tr>
+        <td>Book Title</td>
+        <td><input type="text" name="bookTitle"></td>
+      </tr>
+      <tr>
+        <td>Publication Year</td>
+        <td><input type="text" name="publicationYear"></td>
+      </tr>
+      <tr>
+        <td>Shelf Location</td>
+        <td><input type="text" name="shelfLocation"></td>
+      </tr>
+      <tr>
+        <td>Availability</td>
+        <td><input type="text" name="availability"></td>
+      </tr>
+      <tr>
+        <td>Type</td>
+        <td><input type="text" name="type"></td>
+      </tr>
+	  <tr>
+	          <td>Amount</td>
+	          <td><input type="text" name="amount"></td>
+	        </tr>
+      <tr>
+        <td><input type="Submit" value="register"></td>
+        <td><input type="Reset" value="reset"></td>
+      </tr>
+	  
+    </table>
+    <div class="wrapper">
+      <a href='bookList'><span>Book List</span></a>
+    </div>
+	<div class="wrapper1">
+	     <a href='Account.html'><span>Main Menu</span></a>
+	   </div>
+  </form>
+</body>
+</html>
