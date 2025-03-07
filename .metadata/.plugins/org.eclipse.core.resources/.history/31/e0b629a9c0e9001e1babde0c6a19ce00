@@ -1,7 +1,0 @@
-package Package.copy;
-
-import jakarta.servlet.http.HttpServlet;
-
-public class Library extends HttpServlet {
-
-}
